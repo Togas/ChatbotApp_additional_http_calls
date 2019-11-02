@@ -147,23 +147,5 @@ public class PlaceholderService {
         return null;
 
     }
-    @SuppressWarnings("rawtypes")
-    public String getFormattedString(Object value) {
-        if (value == null) {
-            return null;
-        }
 
-        if (value instanceof List) {
-            StringBuilder result = new StringBuilder();
-            List values = (List) value;
-            for (Object o : values) {
-                result.append(getFormattedString(o) + ", ");
-            }
-            return result.substring(0, result.length() - 2);
-        } else if (value instanceof Double || value instanceof Float) {
-            return new DecimalFormat("#").format(value);
-        } else {
-            return value.toString().replace("##AS_STRING##", "");
-        }
-    }
 }
