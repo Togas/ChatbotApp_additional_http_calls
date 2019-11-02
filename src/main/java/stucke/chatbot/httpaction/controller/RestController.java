@@ -1,6 +1,7 @@
 package stucke.chatbot.httpaction.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import stucke.chatbot.httpaction.service.PlaceholderService;
 import stucke.chatbot.httpaction.service.WatsonService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -33,17 +35,19 @@ public class RestController {
     @Autowired
     HttpCommunicator httpCommunicator;
 
-
+    @CrossOrigin
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public List<String> processChatMessage(@RequestParam("message") String message,
-                                     @RequestParam("chatContextId") String chatContextId,
-                                     @RequestParam("botId") String botId) {
+                                           @RequestParam("chatContextId") String chatContextId,
+                                           @RequestParam("botId") String botId) {
         BotConfig botConfig = databaseService.getBotConfig(botId);
         ChatContext chatContext = databaseService.getChatContext(chatContextId);
         List<String> watsonAnswers = watsonService.getAnswersFromWatson(chatContext, botConfig, message);
 
         List<Answer> answers = getAnswersFromDB(watsonAnswers);
         processHttpActions(answers, chatContext.getContext());
+        databaseService.saveChatContext(chatContext);
+
         List<String> completeAnswers = answers.stream().map(Answer::getUtterance).collect(Collectors.toList());
 
         return completeAnswers;
@@ -53,6 +57,9 @@ public class RestController {
         List<Answer> answers = new ArrayList<>();
         watsonAnswers.forEach(watsonAnswer -> {
             Answer answer = databaseService.getAnswerById(watsonAnswer);
+            if (answer == null) {
+                answer = new Answer(watsonAnswer);
+            }
             answers.add(answer);
         });
         return answers;
@@ -60,10 +67,10 @@ public class RestController {
 
     private void processHttpActions(List<Answer> answers, Map<String, Object> context) {
         answers.forEach(answer -> {
-            Request request = answer.getRequest();
-            if (request == null) {
+            if (answer.getHttpAction() == null || answer.getHttpAction().getRequest() == null) {
                 return;
             }
+            Request request = answer.getHttpAction().getRequest();
             Map<String, String> httpActionHeader = request.getHeaders();
             Map<String, String> httpActionQueryParams = request.getQueryParams();
             Map<String, String> httpActionBody = request.getBody();
@@ -74,12 +81,12 @@ public class RestController {
 
             Object response = httpCommunicator.executeHttpAction(request);
             if (response instanceof Map) {
-                placeholderService.putHttpResponseInContext((Map) response, answer.getResponse(), context);
+                placeholderService.putHttpResponseInContext((Map) response, answer.getHttpAction().getResponse(), context);
             }
-            Object replacedUtterance = placeholderService.findInContext(context, answer.getUtterance());
-            String replacedUtteranceString = placeholderService.getFormattedString(replacedUtterance);
-            answer.setUtterance(replacedUtteranceString);
 
+            String replacedAnswer=placeholderService.insertPlaceholders(answer.getUtterance(), context);
+            answer.setUtterance(replacedAnswer);
+            context.remove("city");
         });
     }
 

@@ -2,13 +2,11 @@ package stucke.chatbot.httpaction.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,7 +56,28 @@ public class PlaceholderService {
             iterator.remove();
         }
     }
+    public String insertPlaceholders(String text, Map<String, Object> context) {
+        if (text == null) {
+            return null;
+        }
+        StringBuilder output = new StringBuilder(text.length() * 2);
+        Matcher matcher = placeholderPattern.matcher(text);
+        int lastEndIndex = 0;
+        while (matcher.find()) {
+            output.append(text, lastEndIndex, matcher.start());
+            lastEndIndex = matcher.end();
+            String key = matcher.group(1);
+            Object conversationValue = findInContext(context, key);
 
+            String replacement="";
+            if (conversationValue != null) {
+                replacement = conversationValue.toString();
+            }
+            output.append(replacement);
+        }
+        output.append(text.substring(lastEndIndex));
+        return output.toString();
+    }
     /**
      * Method puts the fitting httpResponse in customContext
      *

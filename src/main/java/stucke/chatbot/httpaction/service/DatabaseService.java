@@ -53,4 +53,8 @@ public class DatabaseService {
         return chatContext;
     }
 
+    public void saveChatContext(ChatContext context) {
+        template.save(context);
+    }
+
 }

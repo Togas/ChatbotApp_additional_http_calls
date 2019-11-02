@@ -2,17 +2,21 @@ package stucke.chatbot.httpaction.model.collections;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import stucke.chatbot.httpaction.model.Request;
-
-import java.util.Map;
+import stucke.chatbot.httpaction.model.HttpAction;
 
 @Document(collection = "Answer")
 public class Answer {
     @Id
     private String id;
     private String utterance;
-    private Request request;
-    private Map<String, String> response;
+    private HttpAction httpAction;
+
+    public Answer() {
+    }
+
+    public Answer(String utterance) {
+        this.utterance = utterance;
+    }
 
     public String getId() {
         return id;
@@ -30,19 +34,11 @@ public class Answer {
         this.utterance = utterance;
     }
 
-    public Request getRequest() {
-        return request;
+    public HttpAction getHttpAction() {
+        return httpAction;
     }
 
-    public void setRequest(Request request) {
-        this.request = request;
-    }
-
-    public Map<String, String> getResponse() {
-        return response;
-    }
-
-    public void setResponse(Map<String, String> response) {
-        this.response = response;
+    public void setHttpAction(HttpAction httpAction) {
+        this.httpAction = httpAction;
     }
 }
