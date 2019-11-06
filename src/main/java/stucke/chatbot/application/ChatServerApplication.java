@@ -3,7 +3,7 @@ package stucke.chatbot.application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "stucke.chatbot.httpaction")
+@SpringBootApplication(scanBasePackages = "stucke.chatbot")
 public class ChatServerApplication {
 
     public static void main(String[] args) {
