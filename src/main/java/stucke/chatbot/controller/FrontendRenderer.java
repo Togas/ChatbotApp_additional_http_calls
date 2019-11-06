@@ -1,4 +1,4 @@
-package stucke.chatbot.httpaction.controller;
+package stucke.chatbot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

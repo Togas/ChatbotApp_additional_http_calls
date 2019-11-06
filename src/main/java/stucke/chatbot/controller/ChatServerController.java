@@ -1,21 +1,20 @@
-package stucke.chatbot.httpaction.controller;
+package stucke.chatbot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import stucke.chatbot.httpaction.model.Request;
-import stucke.chatbot.httpaction.model.collections.Answer;
-import stucke.chatbot.httpaction.model.collections.BotConfig;
-import stucke.chatbot.httpaction.model.collections.ChatContext;
-import stucke.chatbot.httpaction.service.DatabaseService;
-import stucke.chatbot.httpaction.service.HttpCommunicator;
-import stucke.chatbot.httpaction.service.PlaceholderService;
-import stucke.chatbot.httpaction.service.WatsonService;
+import stucke.chatbot.model.Request;
+import stucke.chatbot.model.collections.Answer;
+import stucke.chatbot.model.collections.BotConfig;
+import stucke.chatbot.model.collections.ChatContext;
+import stucke.chatbot.service.DatabaseService;
+import stucke.chatbot.service.HttpCommunicator;
+import stucke.chatbot.service.PlaceholderService;
+import stucke.chatbot.service.WatsonService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

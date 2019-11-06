@@ -1,8 +1,8 @@
-package stucke.chatbot.httpaction.model.collections;
+package stucke.chatbot.model.collections;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import stucke.chatbot.httpaction.model.HttpAction;
+import stucke.chatbot.model.HttpAction;
 
 @Document(collection = "Answer")
 public class Answer {

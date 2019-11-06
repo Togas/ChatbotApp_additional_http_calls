@@ -1,4 +1,4 @@
-package stucke.chatbot.httpaction.service;
+package stucke.chatbot.service;
 
 import com.ibm.watson.developer_cloud.assistant.v1.Assistant;
 import com.ibm.watson.developer_cloud.assistant.v1.model.Context;
@@ -6,8 +6,8 @@ import com.ibm.watson.developer_cloud.assistant.v1.model.InputData;
 import com.ibm.watson.developer_cloud.assistant.v1.model.MessageOptions;
 import com.ibm.watson.developer_cloud.assistant.v1.model.MessageResponse;
 import org.springframework.stereotype.Service;
-import stucke.chatbot.httpaction.model.collections.BotConfig;
-import stucke.chatbot.httpaction.model.collections.ChatContext;
+import stucke.chatbot.model.collections.BotConfig;
+import stucke.chatbot.model.collections.ChatContext;
 
 import java.util.List;
 

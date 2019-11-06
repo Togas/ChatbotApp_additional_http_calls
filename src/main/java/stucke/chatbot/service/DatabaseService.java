@@ -1,14 +1,14 @@
-package stucke.chatbot.httpaction.service;
+package stucke.chatbot.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
-import stucke.chatbot.httpaction.db.MongoTemplateManager;
-import stucke.chatbot.httpaction.model.collections.Answer;
-import stucke.chatbot.httpaction.model.collections.BotConfig;
-import stucke.chatbot.httpaction.model.collections.ChatContext;
+import stucke.chatbot.db.MongoTemplateManager;
+import stucke.chatbot.model.collections.Answer;
+import stucke.chatbot.model.collections.BotConfig;
+import stucke.chatbot.model.collections.ChatContext;
 
 import javax.annotation.PostConstruct;
 

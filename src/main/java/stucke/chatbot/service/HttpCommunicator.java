@@ -1,4 +1,4 @@
-package stucke.chatbot.httpaction.service;
+package stucke.chatbot.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import stucke.chatbot.httpaction.model.Request;
+import stucke.chatbot.model.Request;
 
 import java.util.Iterator;
 import java.util.Map;

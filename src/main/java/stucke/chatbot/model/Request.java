@@ -1,4 +1,4 @@
-package stucke.chatbot.httpaction.model;
+package stucke.chatbot.model;
 
 import org.springframework.http.HttpMethod;
 

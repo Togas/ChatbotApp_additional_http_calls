@@ -1,4 +1,4 @@
-package stucke.chatbot.httpaction.application;
+package stucke.chatbot.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
