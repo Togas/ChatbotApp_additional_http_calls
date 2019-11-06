@@ -1,0 +1,181 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    --color-primary: black;
+    --color-secondary: white;
+    --color-accent: red;
+
+    --box-shadow-small: 2px;
+    --box-shadow-big: 10px;
+
+    --font-size-normal: 16px;
+    --font-size-big: 18px;
+}
+
+.typography-bold {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--font-size-normal);
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+}
+
+.typography-normal {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--font-size-normal);
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+}
+
+.typography-big-bold {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--font-size-big);
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+}
+
+.shadow-small-primary {
+    -webkit-box-shadow: var(--box-shadow-small) var(--box-shadow-small) 0px 0px var(--color-primary);
+    -moz-box-shadow: var(--box-shadow-small) var(--box-shadow-small) 0px 0px var(--color-primary);
+    box-shadow: var(--box-shadow-small) var(--box-shadow-small) 0px 0px var(--color-primary);
+}
+
+.chat__messages--wrapper {
+    height: 100%;
+    width: 100%;
+
+    border-bottom: solid var(--color-primary);
+    overflow: hidden;
+}
+
+.chat__messages {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 20px;
+}
+
+.chat__messages > * {
+    margin: 20px;
+}
+
+.chat__message--own {
+    text-align: right;
+}
+
+.chat__inputs {
+    display: flex;
+    flex: 0 0 80px;
+    align-items: center;
+}
+
+.chat__inputs > * {
+    height: 32px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+.chat__inputs > *:focus {
+    outline:0;
+}
+
+.chat__inputs__send:active, .chat__button--active {
+    background-color: var(--color-accent) !important;
+    color: var(--color-secondary);
+}
+
+.chat__inputs__user {
+    /* .shadow-small-primary */
+
+    border: solid var(--color-primary);
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: var(--font-size-normal);
+}
+
+.chat__inputs__message {
+    /* .shadow-small-primary */
+
+    border: solid var(--color-primary);
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: var(--font-size-normal);
+}
+
+.chat__inputs__send {
+    /* .typography-big-bold */
+    -webkit-box-shadow: var(--box-shadow-small) var(--box-shadow-small) 0px 0px var(--color-accent);
+    -moz-box-shadow: var(--box-shadow-small) var(--box-shadow-small) 0px 0px var(--color-accent);
+    box-shadow: var(--box-shadow-small) var(--box-shadow-small) 0px 0px var(--color-accent);
+
+    background-color: var(--color-secondary);
+    border: solid var(--color-accent);
+    font-size: var(--font-size-big);
+}
+
+@media only screen and (max-width: 720px) {
+    .chat {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat__inputs > * {
+        margin: 0 10px;
+    }
+
+    .chat__inputs__user {
+        width: 80px;
+    }
+    
+    .chat__inputs__message {
+        width: 100px;
+        flex: 1;
+    }
+
+    .chat__inputs__send {
+        width: 80px;
+    }
+}
+
+@media only screen and (min-width: 721px) {
+    .chat {
+        -webkit-box-shadow: var(--box-shadow-big) var(--box-shadow-big) 0px 0px var(--color-primary);
+        -moz-box-shadow: var(--box-shadow-big) var(--box-shadow-big) 0px 0px var(--color-primary);
+        box-shadow: var(--box-shadow-big) var(--box-shadow-big) 0px 0px var(--color-primary);    
+
+        display: flex;
+        flex: 0 0 620px;
+        flex-direction: column;
+    
+        margin: 100px 0;
+        border: solid 3px var(--color-primary);
+    }
+
+    .chat__inputs > * {
+        margin: 0 20px;
+    }
+
+    .chat__inputs__user {
+        width: 100px;
+    }
+    
+    .chat__inputs__message {
+        width: 300px;
+    }
+
+    .chat__inputs__send {
+        width: 100px;
+    }
+}

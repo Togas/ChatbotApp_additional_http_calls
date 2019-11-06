@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class ChatServerController {
 
     @Autowired
     DatabaseService databaseService;
