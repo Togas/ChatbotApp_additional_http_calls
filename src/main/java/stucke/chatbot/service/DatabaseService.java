@@ -3,6 +3,7 @@ package stucke.chatbot.service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import stucke.chatbot.db.MongoTemplateManager;
@@ -21,9 +22,12 @@ public class DatabaseService {
 
     MongoTemplate template;
 
+    @Value("${spring.data.mongodb.uri}")
+    private String dbUri;
+
     @PostConstruct
     public void init() {
-        template = templateManager.createDBManager("mongodb://localhost/praxisbericht_db");
+        template = templateManager.createDBManager(dbUri);
     }
 
 

@@ -1,0 +1,7 @@
+{
+  "_id": "wetterBot",
+  "botId": "0b3e06f1-f43a-4462-9c7d-90db6bcb5c92",
+  "endpoint": "https://gateway.watsonplatform.net/assistant/api",
+  "username": "",
+  "password": ""
+}

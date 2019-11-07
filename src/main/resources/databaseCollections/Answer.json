@@ -1,0 +1,21 @@
+{
+  "_id": "wetter",
+  "utterance": "Das Wetter in ${city} beträgt ${temperature}°C",
+  "httpAction": {
+    "request": {
+      "httpMethod": "GET",
+      "url": "https://api.openweathermap.org/data/2.5/weather",
+      "queryParams": {
+        "q": "${city}",
+        "APPID": "",
+        "units": "metric"
+      },
+      "headers": {
+        "MediaType": "application/json"
+      }
+    },
+    "response": {
+      "temperature": "main.temp"
+    }
+  }
+}

@@ -183,5 +183,5 @@ class MessageSender {
 window.CHAT = {};
 CHAT.chatForm = new ChatForm();
 CHAT.messageRenderer = new MessageRenderer(CHAT.chatForm);
-CHAT.messageSender = new MessageSender("http://localhost:8080", CHAT.chatForm, CHAT.messageRenderer, "praxisbericht_bot");
+CHAT.messageSender = new MessageSender("http://localhost:8080", CHAT.chatForm, CHAT.messageRenderer, "wetterBot");
 CHAT.messageSender.sendInitializingMessage();
