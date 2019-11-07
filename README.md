@@ -19,7 +19,9 @@ Diese Werte sind in meinem Praxisbericht zu finden.
 Die Datenbank sollte dann so aussehen: 
 
 ![db screenshot](./src/main/resources/screenshotsReadme/praxisbericht_db_appearance.PNG?raw=true)
-
+Die Anwendung kann über die jar im target Ordner gestartet werden oder durch starten der main Methode.
+Wenn über die main Methode gestartet wird, dann müssen vorher die dependencies 
+mit Maven heruntergeladen werden.
 Wenn die Datenbank mit den entsprechenden Werten lokal läuft und man die Anwendung startet, 
 sieht man im Browser auf der Adresse localhost:8080 das Chatfenster und kann den Bot nach dem Wetter in 
 einer der 25 größten Hauptstädte Deutschlands fragen. Das sollte dann so aussehen:
