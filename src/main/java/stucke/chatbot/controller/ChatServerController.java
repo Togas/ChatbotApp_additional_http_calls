@@ -74,6 +74,9 @@ public class ChatServerController {
             Map<String, String> httpActionQueryParams = request.getQueryParams();
             Map<String, String> httpActionBody = request.getBody();
 
+            String replacedUrl = placeholderService.insertPlaceholders(request.getUrl(), context);
+            request.setUrl(replacedUrl);
+
             placeholderService.swapEntityPlaceholder(httpActionHeader, context);
             placeholderService.swapEntityPlaceholder(httpActionQueryParams, context);
             placeholderService.swapEntityPlaceholder(httpActionBody, context);
@@ -83,7 +86,7 @@ public class ChatServerController {
                 placeholderService.putHttpResponseInContext((Map) response, answer.getHttpAction().getResponse(), context);
             }
 
-            String replacedAnswer=placeholderService.insertPlaceholders(answer.getUtterance(), context);
+            String replacedAnswer = placeholderService.insertPlaceholders(answer.getUtterance(), context);
             answer.setUtterance(replacedAnswer);
             context.remove("city");
         });
