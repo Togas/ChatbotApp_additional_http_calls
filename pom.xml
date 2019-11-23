@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>stucke.chatbot</groupId>
-    <artifactId>httpaction</artifactId>
+    <artifactId>chatbotApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>httpaction</name>
+    <name>chatbotApp</name>
     <description>Project to showcase http calls in a Chatbot Application</description>
 
     <properties>

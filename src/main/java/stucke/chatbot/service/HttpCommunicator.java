@@ -31,7 +31,7 @@ public class HttpCommunicator {
         }
         RequestHeadersSpec<?> preparedHttpRequest = prepareHttpCall(request);
         try {
-                return preparedHttpRequest.retrieve().bodyToMono(Object.class).block();
+            return preparedHttpRequest.retrieve().bodyToMono(Object.class).block();
         } catch (WebClientResponseException e) {
             logger.warn(e);
         }
@@ -56,7 +56,12 @@ public class HttpCommunicator {
         if (queryParams == null) {
             return url;
         }
-        StringBuilder completeUrl = new StringBuilder(url + "?");
+        StringBuilder completeUrl;
+        if (!url.contains("?")) {
+            completeUrl = new StringBuilder(url + "?");
+        } else {
+            completeUrl = new StringBuilder(url + "&");
+        }
         Iterator iterator = queryParams.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry queryParam = (Map.Entry) iterator.next();
